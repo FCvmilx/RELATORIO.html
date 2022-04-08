@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Relatório 3</title>
+    
+</head>
+<body>
+    <div id="externa">
+        <div id="cabeçalho">
+            <h1 id="principal">Relatório da Avaliação 3</h1>
+        </div>
+        <main>
+            <h1 class="tópicos">Introdução</h1>
+                <p>
+                    Este relatório consiste em apresentar a documentação referente à Avaliação 3. 
+                    O objetivo do terceiro trabalho é a implementação de uma biblioteca para o 
+                    Tipo Abstrato de Dado StringSet utilizando a estrutura TRIE. Será exibido no 
+                    relatório a explicação de cada função implementada no código 
+                    (escrito na linguagem C) e exemplos de execução no fim.
+                </p>
+            <h1 class="tópicos">Definição de Dados</h1>
+            <pre style="white-space:pre;">
+                <div class="terminal">
+                    <span class="reservada">#define</span> <span class="func">MAX</span> <span class="valores">27</span>
+                    <span class="reservada">#define</span> <span class="func">AVISO</span>(msg) <span class="func">fprintf</span>(<span class="func">stdout</span>, <span class="str">"AVISO:</span> <span class="valores">%s</span><span class="reservada">\n</span><span class="str">"</span>, #msg)
+
+                    <span class="reservada">typedef char *</span><span class="definidos">String</span>;
+
+                    <span class="reservada">typedef enum</span> {
+                        false,
+                        true
+                    }<span class="definidos">bool</span>;
+
+                    <span class="reservada">typedef struct</span> <span class="definidos">no</span> {
+                        <span class="reservada">char</span> dado;
+                        <span class="reservada">struct</span> <span class="definidos">no</span><span class="reservada">*</span> filhos[<span class="func">MAX</span>];
+                        <span class="definidos">bool</span> fim;
+                        <span class="definidos">String</span> conteudo;
+                    }<span class="definidos">No</span>;
+                </div>
+            
+            </pre>
+
+                <p>
+                    Para este programa, utilizamos a estrutura de TRIE TREE. Para criar esta 
+                    estrutura, utilizamos as definições acima.
+                </p>
+                <p>
+                    A linha #define MAX 27, define uma constante global que será usada para definir
+                    o conjunto de possibilidades de caracteres da entrada,
+                    sendo as 26 letras minúsculas do alfabeto e o terminador de string : ‘\0’.
+                </p>
+                <p>
+                    Em seguida, definimos que o vetor de caracteres se chamaria String. 
+                    Após isso, definimos um tipo de dado booleano.
+                </p>
+                <p>
+                    E por fim, definimos a estrutura geral do nó da árvore.
+                </p>
+            <h1 class="tópicos">Funções</h1>
+                <ol id="funções">
+                    <li>criaNo</li>
+                        <p>No* criaNo(char Letra)</p>
+                        <p>Retorna um nó alocado dinamicamente.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>liberaNo</li>
+                        <p>void liberaNo(No* node)</p>
+                        <p>Desaloca a porção de memória alocada para o Nó.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>Insere</li>
+                        <p>void Insere(No* raiz, String palavra)</p>
+                        <p>A função de inserção recebe uma palavra e adiciona cada caractere
+                            na árvore, de forma a criar novos nós caso não exista na árvore.
+                        </p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>Pertence</li>
+                        <p>bool Pertence(No* raiz, String palavra)</p>
+                        <p>Função que percorre a árvore buscando o índice de 
+                            cada caractere da string buscada. Ao chegar na última letra da palavra, 
+                            verifica se o nó é folha e não é nulo.
+                        </p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>Vazia</li>
+                        <p>bool Vazia(No* raiz)</p>
+                        <p>A função verifica se a variável global que contabiliza o número de 
+                            palavras é igual a 0.</p>
+                            <pre style="white-space:pre;">
+                                <div class="terminal">
+    
+                                </div>
+                            </pre>
+                    <li>Remove</li>
+                        <p>No* Remove(No* raiz, String palavra, int index)</p>
+                        <p>Remove uma palavra da árvore: A função percorre todo o caminho que leva até a folha e 
+                            remove o nó apenas se este não tiver filhos.</p>
+                            <pre style="white-space:pre;">
+                                <div class="terminal">
+    
+                                </div>
+                            </pre>
+                    <li>Imprime</li>
+                        <p>void Imprime(No* raiz, String palavra , int index)</p>
+                        <p>Percorre toda a árvore imprimindo as palavras. Ao encontrar um nó folha 
+                            percorre seguindo a ordem de índices que 
+                            basicamente deixa a árvore lexicograficamente ordenada.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>ImprimeComPre</li>
+                        <p>void ImprimeComPre(No* raiz, String palavra, String prefix, int index)</p>
+                        <p>Similar à função de impressão, porém recebe um nó interno que é o fim do prefixo,
+                            além de receber a string prefixo 
+                            para imprimi-la junto aos nós subsequentes.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>Prefixo</li>
+                        <p>void Prefixo(No* raiz, String prefixo)</p>
+                        <p>Responsável por percorrer o caminho do prefixo na árvore e
+                            chamar a função ImprimeComPre() 
+                            para realizar a impressão dos Nós.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>Tamanho</li>
+                        <p>int Tamanho()</p>
+                        <p>Retorna o valor da variável global que contabiliza o número de palavras adicionadas.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>CTOI</li>
+                        <p>int CTOI(char letra)</p>
+                        <p>recebe um caractere e retorna seu valor inteiro na tabela ASCII.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                    <li>apagaArvore</li>
+                        <p>No* apagaArvore(No* raiz)</p>
+                        <p>Recebe o nó raiz e percorre toda árvore até chegar em um Nó externo, que, 
+                            caso não tenha filhos, é removido.</p>
+                        <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                </ol>
+            <h1 class="tópicos">Arquivo Main</h1>
+                <p>Para testar as funções da biblioteca e apresentar a execução neste relatório, 
+                    desenvolvemos um arquivo cliente chamado main.c que testaria todas as funções e 
+                    a medida que estas fossem sendo executadas, gerava um log no terminal.</p>
+                <p>É importante frisar que o arquivo main.c recebe entradas de outros arquivos 
+                    de texto, sendo estes: insere.txt, remove.txt
+                    e pertence.txt. Cada um destes arquivos contém um 
+                    conjunto de palavras e o nome sugere sua função.</p>
+                <p>Primeiramente, criamos um nó raiz para a nossa árvore, utilizando a função criaNo.
+                </p>
+                <p>Em seguida, abrimos o arquivo insere.txt para receber as palavras que serão adicionadas
+                    a nossa árvore, faremos da seguinte forma:</p>
+                <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                <p>Perceba que neste trecho do código, lemos cada palavra do arquivo de entrada e utilizamos 
+                    a função Insere para adicioná-los à árvore. Também utilizamos um contador básico, 
+                    apenas para nos informar quantas palavras foram inseridas.</p>
+                <p>O segundo passo é remover algumas palavras, e para isso utilizamos o arquivo remove.txt, 
+                    que contém um conjunto menor de palavras, 
+                    para que a árvore não termine vazia. Veja como fizemos:</p>
+                <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                <p>Da mesma forma que fizemos para ler as palavras do arquivo anterior, nós lemos o arquivo
+                    remove.txt, assim utilizamos a função Remove passando cada palavra lida como argumento,
+                    por fim um contador apenas nos 
+                    indica quantas palavras foram de fato removidas.</p>
+                <p>Bom, agora que inserimos e removemos algumas palavras, devemos ter certeza que essas palavras
+                    foram mesmo adicionadas, para isso testamos algumas dessas palavras utilizando a função
+                    Pertence, para cada palavra do arquivo pertence.txt.</p>
+                <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                <p>Verificamos que as funções de inserção, remoção e pertencimento estão funcionando. 
+                    Para termos certeza de fato que todas 
+                    as palavras foram adicionadas vamos imprimir todas elas em ordem lexicográfica:</p>
+                <pre style="white-space:pre;">
+                            <div class="terminal">
+
+                            </div>
+                        </pre>
+                <p>Este trecho do código chama a função Imprime, que por sua vez imprime todas as palavras contidas naquela árvore.
+                </p>
+                <p>Por fim, vamos testar uma das funções mais interessantes deste TAD: a função Prefixo.</p>
+                <p>A função Prefixo é utilizada para encontrar palavras na árvore cujo prefixo seja igual ao prefixo buscado, podendo ser utilizada em algoritmos de busca.</p>
+                <p>Vejamos como é a chamada da função:</p>
+                <img src="" alt="">
+            <h1 class="tópicos">Resultado no Terminal</h1>
+            <h2>Após utilizarmos a função de inserção e remoção o resultado gerado no terminal é:</h2>
+                <div classe="terminal" style="background-color: #25272f; 
+                padding: 30px; color: #dcdbee; 
+                box-shadow: inset 10px 10px 25px #000000;">
+                    <p>Árvore vazia! <br><br>
+
+                        110 palavras foram inseridas!<br><br>
+                        
+                        A árvore contém elementos!<br><br>
+                        
+                        17 palavras foram removidas!<br><br>
+                        
+                        A árvore contém elementos!<br><br>
+                        
+                        O tamanho da árvore é: 93<br><br>  
+                    </p>
+                </div>
+            <h2>E então o resultado da função de pertencimento:</h2>
+                <div classe="terminal" style="background-color: #25272f; 
+                padding: 30px; color: #dcdbee; 
+ 
+                box-shadow: inset 10px 10px 25px #000000;">
+                    <p>Buscando palavras: 
+                        afundavas
+                        não encontrado!<br><br>
+                        
+                        agendamo
+                        não encontrado!<br><br>
+                        
+                        poliamidas
+                        encontrado!<br><br>
+                        
+                        sibilavam
+                        encontrado!<br><br>
+                        
+                        xingara
+                        encontrado!<br><br>
+                        
+                        abandonou
+                        encontrado!<br><br>
+                        
+                        comprometedoras
+                        encontrado!<br><br>
+                        
+                    </p>
+
+                </div>
+                <h2>O resultado gerado para a função de impressão foi</h2>
+                <div classe="terminal" style="background-color: #25272f; 
+                padding: 30px; color: #dcdbee; 
+
+                box-shadow: inset 10px 10px 25px #000000;">
+                    <p>Imprimindo abaixo todos os elementos da árvore em ordem lexicográfica:<br>
+                        abandonou<br>
+                        abordara<br>
+                        academicizar<br>
+                        aclimatizaram<br>
+                        adite<br>
+                        aperrea<br>
+                        aplicasseis<br>
+                        aquartela<br>
+                        aqueco<br>
+                        arquejou<br>
+                        arrancarei<br>
+                        arrimaremos<br>
+                        barganhemos<br>
+                        beiremos<br>
+                        broqueiam<br>
+                        campos<br>
+                        cavocaram<br>
+                        cega<br>
+                        cinzelara<br>
+                        comprometedoras<br>
+                        conciliaremos<br>
+                        condimentarem<br>
+                        conhecendo<br>
+                        contradizer<br>
+                        corredimireis<br>
+                        criaras<br>
+                        debelam<br>
+                        degusto<br>
+                        depenemo<br>
+                        desapertasseis<br>
+                        desbastasseis<br>
+                        descabelei<br>
+                        descartado<br>
+                        descosturarem<br>
+                        descumprirdes<br>
+                        diagnosticara<br>
+                        digitemo<br>
+                        dreneis<br>
+                        efetuaramos<br>
+                        embruteco<br>
+                        enchouricaras<br>
+                        encontrais<br>
+                        encrespaveis<br>
+                        enfeixariamos<br>
+                        enfraqueceu<br>
+                        engorduraremos<br>
+                        enlatar<br>
+                        entroncassemos<br>
+                        esculacha<br>
+                        espicharmos<br>
+                        esquentando<br>
+                        estagiais<br>
+                        extremariamos<br>
+                        fotografaram<br>
+                        franzisses<br>
+                        fraquinho<br>
+                        frontalmente<br>
+                        garota<br>
+                        geologia<br>
+                        homologues<br>
+                        infringiras<br>
+                        linearizaram<br>
+                        maquinaste<br>
+                        memorial<br>
+                        necessitava<br>
+                        ornada<br>
+                        pancas<br>
+                        percutes<br>
+                        persignamo<br>
+                        picaretarmo<br>
+                        poliamidas<br>
+                        prospectaria<br>
+                        radicarmos<br>
+                        reabrirdes<br>
+                        refogais<br>
+                        reinicializais<br>
+                        restabeleceriam<br>
+                        retroagisses<br>
+                        satureis<br>
+                        serracao<br>
+                        sibilavam<br>
+                        sobrecarregavamos<br>
+                        sorteeis<br>
+                        tiranizes<br>
+                        tolo<br>
+                        tostemos<br>
+                        transfundemo<br>
+                        vagara<br>
+                        vaporizemos<br>
+                        veteis<br>
+                        xerografemos<br>
+                        xingara<br>
+                        zombaras<br>
+                        </p>
+
+                </div>
+                <h2>Por fim o resultado da busca por prefixo:</h2>
+                    <div classe="terminal" style="background-color: #25272f; 
+                    padding: 30px; color: #dcdbee; 
+                    box-shadow: inset 10px 10px 25px #000000;">
+                        <p>Buscando palavras através de um prefixo:<br><br>
+
+                            Buscando prefixo 'x':<br>
+                            xerografemos<br>
+                            xingara<br><br>
+                            
+                            Buscando prefixo 'con':<br>
+                            conciliaremos<br>
+                            condimentarem<br>
+                            conhecendo<br>
+                            contradizer<br><br>
+                            
+                            Buscando prefixo 'des':<br>
+                            desapertasseis<br>
+                            desbastasseis<br>
+                            descabelei<br>
+                            descartado<br>
+                            descosturarem<br>
+                            descumprirdes<br><br>
+                            
+                            Buscando prefixo 'en':<br>
+                            enchouricaras<br>
+                            encontrais<br>
+                            encrespaveis<br>
+                            enfeixariamos<br>
+                            enfraqueceu<br>
+                            engorduraremos<br>
+                            enlatar<br>
+                            entroncassemos<br><br>
+                            
+                            Buscando prefixo 'in':<br>
+                            infringiras<br><br>
+                            
+                            Buscando prefixo 're':<br>
+                            reabrirdes<br>
+                            refogais<br>
+                            reinicializais<br>
+                            restabeleceriam<br>
+                            retroagisses<br><br>
+                            
+                            Buscando prefixo 'z':<br>
+                            zombaras<br>
+                            </p>
+
+                    </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

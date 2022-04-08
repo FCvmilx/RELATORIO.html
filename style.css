@@ -1,0 +1,82 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+
+body {
+    background-color: #dcdbee;
+    width: auto;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+main {
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    overflow: auto;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 10px 10px 15px #b3b2c179;
+}
+
+div {
+    border-radius: 10px;
+
+}
+
+.tópicos {
+    font-family: serif;
+    font-size: 2.5em;
+    color: #060606;
+    text-shadow: 1px 1px 3px #06060697;
+}
+
+#cabeçalho {
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    color: #060606;
+}
+
+#principal {
+    font-family: serif;
+    font-size: 4em;
+    text-shadow: 1px 1px 2px #06060697;
+}
+
+div.terminal {
+    background-color: #25272f;  
+    color: #dcdbee; 
+    box-shadow: inset 5px 5px 25px #000000;
+    margin: auto;
+    text-overflow: ellipsis;
+    overflow: auto !important;
+   
+}
+h2 {
+    font-size: 1.2rem;
+    color: #060606;
+}
+
+span {
+    
+    margin: auto;
+    display: inline-block;
+}
+.definidos {
+    color: rgb(3, 162, 214);
+}
+
+.valores {
+    color: #ba3ce7;
+}
+.reservada {
+    color: #c5447a
+}
+.str {
+    color: rgba(221, 221, 1, 0.803);
+}
+.func {
+    color: rgb(0, 228, 34);
+}
